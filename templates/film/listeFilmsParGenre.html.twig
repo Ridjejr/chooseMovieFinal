@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste films{% endblock %}
+
+{% block body %}
+
+<br>
+<div class="body-margin">
+    <div class="row pt-5 ">
+    {% for leFilm in lesFilms %}
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-2">
+                <div class="card mb-3">
+                    <a href="{{ path('ficheFilm', {'id': leFilm.id}) }}">
+                        <img class="avatar mx-auto d-block" style="height: 100%; width: 100%; object-fit: cover;   display: block;" src="{{asset(leFilm.image)}}" alt="{{leFilm.titre}}">
+                    </a>            
+                </div>
+            </div>
+    {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

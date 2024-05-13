@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification film{% endblock %}
+
+{% block body %}
+<h1 class="pt-4 text-center">Modification d'un film</h1>
+
+<div class="container">
+    {{ form_start(formFilms) }}
+
+    <div class="col pt-4"> {{form_row(formFilms.titre)}} </div>
+
+    <div class="row pt-4">
+        <div class="col"> {{form_row(formFilms.image)}} </div>
+        <div class="col"> {{form_row(formFilms.genre)}} </div>
+    </div>
+    <div class="row">
+        <div class="col"> {{form_row(formFilms.duree)}} </div>
+        <div class="col"> {{form_row(formFilms.dateSortie)}} </div>
+    </div>
+
+    {{form_row(formFilms.description)}}
+
+    <div class="row pt-4">
+        <div class="col"> {{form_row(formFilms.acteurPrincipale)}} </div>
+        <div class="col"> {{form_row(formFilms.realisateur)}} </div>
+    </div>
+
+    <div class="col pt-4"> {{form_row(formFilms.bandeAnnonce)}} </div>
+
+    <div class="row pt-2">
+        <div class="col"><a href="{{path("admin_films")}}" class="btn btn-dark">Annuler</a></div>
+        <div class="col"><input type="submit", class="btn btn-success" value="valider les modifications"></div>
+    </div>
+</div>
+
+
+{{ form_end(formFilms) }}
+{% endblock %}
+
+{% block javascripts %}
+<script src=" {{asset("js/gestionUpload.js")}} " defer ></script>
+{% endblock %}

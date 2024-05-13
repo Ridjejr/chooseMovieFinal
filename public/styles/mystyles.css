@@ -1,0 +1,120 @@
+/* General */
+
+body {
+  margin: 0;
+  padding: 0;
+  --primary: #000000;
+  --secondary: #fca311;
+  --tertiary: #ffffff;
+  --quaternary: #343a40;
+}
+
+.nav-logo {
+  display: flex;
+  justify-content: start;
+}
+
+.nav-logo img {
+  width: 7rem;
+}
+
+.body-background {
+  background-color: var(--quaternary);
+}
+
+.body-margin {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #1a1a1a;
+}
+
+/* Ajouter un espace à gauche et à droite de la page */
+.footer-container {
+  max-width: 1200px; /* Largeur maximale du contenu */
+  margin: 0 auto; /* Centre le contenu horizontalement */
+  padding: 70px 30px 20px;
+}
+
+/* Réduire la marge des éléments dans la navigation */
+.footer-nav ul li a {
+  margin: 0 10px; /* Réduire la marge sur les côtés */
+  color: var(--tertiary);
+  text-decoration: none;
+  font-size: 1.3em;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.footer-nav ul li a:hover {
+  opacity: 1;
+}
+
+/* Ajuster l'espacement des éléments dans la navigation */
+.footer-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+/* Ajuster l'espacement du bas du footer */
+.footer-bottom {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-bottom {
+  color: white;
+}
+.social-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.social-logo img {
+  width: 10rem;
+}
+
+/* HEADER */
+
+#content {
+  margin-top: 88px;
+}
+
+#content-accueil {
+  background-image: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)),
+    url("../images/choose_accueil.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 8px solid #343434;
+  height: 90vh;
+  max-width: 100%;
+  padding-top: 5rem;
+}
+
+#content-accueil h1 {
+  color: #fff;
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center;
+  line-height: -1;
+}
+
+#content-accueil h3 {
+  color: #fff;
+  font-size: 1.8em;
+  text-align: center;
+  line-height: 2;
+}
+
+#content-accueil p {
+  color: #fff;
+  font-size: 1.1em;
+  text-align: center;
+}

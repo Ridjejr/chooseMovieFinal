@@ -2,18 +2,90 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            {% block title %}Choose movie
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+        <script src="https://kit.fontawesome.com/cc76ccb927.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{asset('styles/mystyles.css')}}"> 
+        <link rel="icon" type="image/png" href="{{asset('images/favicon.png')}}">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+       {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg bg-primary flex justify-between items-center fixed-top"  data-bs-theme="dark" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);">
+            <div class="container-fluid mx-3">
+                <a class="navbar-brand" href="{{path("accueil")}}"><div class="nav-logo"><img src="{{asset('images/Monlogo.png')}}" alt="logo"></div></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('films')}}">Films</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('genres')}}">Catégories</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{path('admin_films')}}">Gestion des films</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{path('admin_genres')}}">Gestion des catégories</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                {# <a class="nav-item my-auto mg-2 mx-3"  href="#">
+                    <button type="button" class="btn btn-outline-info">S'identifier</button>
+                </a> #}
+            </div>
+        </nav>
+
+        <div class="container-fluid p-0" id="content">
+        {# affiche tous les messages flashes #}
+        {% for label, messages in app.flashes %}
+            <div class="alert alert-{{label}} mt-4">
+                {% for message in messages %}
+                   <p> {{message}} </p> 
+                {% endfor %}
+            </div>
+
+        {% endfor %}
         {% block body %}{% endblock %}
+        </div>
+        {# <footer>
+            <div class="footer-container">
+                <div class="social-logo">
+                    <img src="{{asset('images/Monlogo.png')}}" alt="logo">
+                </div>
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">CGU</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <p>Copyright &copy;2024 Designed by <a href="#"><span class="designer" style="color: white;">Missilou</span></a></p>
+                </div>
+            </div>
+        </footer> #}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+        $(document)ready(function(){
+            $('.selectFilms').select2();
+        });
+        </script>
+        {% block javascripts %}
+            <script src="js/script.js"></script>
+        {% endblock %}
     </body>
 </html>

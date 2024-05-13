@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}gestion catégories{% endblock %}
+
+{% block body %}
+<h3 class="pt-4 text-center">Gestion des genres</h3>
+<a href="{{path("admin_genre_ajout")}}" class="btn" style="border-radius: 5px; margin-left: 10px; background-color: var(--secondary); color:white;">Ajouter une catégorie</a>
+{# <a href="{{path('admin_genre_ajout')}}" class="btn btn-warning" style="margin-top: 20px;">Ajouter une catégorie</a> #}
+<hr>
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col-1">Genres</th>
+        <th scope="col-2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for leGenre in lesGenres %}
+              <tr>
+                <td class="col-1">{{ leGenre.nom }}</td>
+                    <td class="col-2">
+                      <a href="{{path('admin_genre_modif', {'id': leGenre.id})}}" class="btn btn-dark" style="border-radius: 5px"><i class="fas fa-pen"></i></a>
+                      <a class="btn btn-danger" 
+                      style="border-radius: 5px" 
+                      data-toggle="modal" 
+                      data-target="#modalSimple"
+                      data-titre="Suppression d'une catégorie"
+                      data-message="Etes vous sur de vouloir supprimer la catégorie : {{ leGenre.nom }}"
+                      data-libelleBouton="Supprimer la catégorie"
+                      data-lien="{{ path('admin_genre_suppression', {'id': leGenre.id}) }}"
+                      ><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                  </td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+
+  </div>
+
+</div>
+
+{% endblock %}
+{% block javascripts %}
+{% include 'include/_modale.html.twig' %}
+{% endblock %}

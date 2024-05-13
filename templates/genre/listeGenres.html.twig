@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GenreController!{% endblock %}
+
+{% block body %}
+{# <div style="margin-top: 60px;">
+    <div class="row mx-3 mt-5 d-flex align-items-center justify-content-center ">
+        {% for leGenre in lesGenres %}
+            <div class="card m-2" style="margin: 0; padding: 0; width: 100%; max-width: 15rem; overflow: hidden; border-radius: 10px;">
+                <div class="card-body" style="margin: 0; padding: 0;">
+                    <img class = "avatar mx-auto d-block" src="{{ asset('images/categorie.webp') }}" style="width: 100%; height: 100%;  object-fit: cover;" alt=" images catégories">
+                    <div class="card-img-overlay d-flex align-items-center justify-content-center" style="border-radius: 10px; background: rgba(0, 0, 0, 0.5);"> 
+                        <h5 class="card-title" style="color: white;">{{ leGenre.nom }}</h5>
+                    </div> 
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>  #}
+
+
+<div style="margin-top: 60px;">
+    <div class="row mx-3 mt-5 d-flex align-items-center justify-content-center ">
+        {% for leGenre in lesGenres %}
+            <div class="card m-2" style="margin: 0; padding: 0; width: 100%; max-width: 15rem; overflow: hidden; border-radius: 10px;">
+                <div class="card-body" style="margin: 0; padding: 0;">
+                    <img class = "avatar mx-auto d-block" src="{{ asset('images/categorie.webp') }}" style="width: 100%; height: 100%;  object-fit: cover;" alt=" images catégories">
+                    <div class="card-img-overlay d-flex align-items-center justify-content-center" style="border-radius: 10px; background: rgba(0, 0, 0, 0.5);"> 
+                        <h5 class="card-title" style="color: white;">
+                            <a href="{{ path('films_par_genre', {'id': leGenre.id}) }}" style="color: white;">{{ leGenre.nom }}</a>
+                        </h5>
+                    </div> 
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div> 
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion catégories{% endblock %}
+
+{% block body %}
+
+<h3 class="pt-2 text-center pt-4">
+
+{% if (app.request.attributes.get('_route')=="admin_genre_ajout") %}
+    Ajout
+{% else %}
+    Modification
+{% endif %}
+d'une catégorie</h3>
+
+<div class="container d-flex align-items-center justify-content-center pt-4">
+    <br>
+    <div class="w-50">
+        {{ form_start(formGenre, {'attr': {'class': 'mx-auto'}}) }}
+
+    <div>
+        {{ form_row(formGenre.nom) }}
+    </div>
+    <div class="row pt-2">
+        <div class="col"><a href=" {{path('admin_genres')}} " class="btn btn-warning btn-block">Annuler</a></div>
+        <div class="col"><input type="submit", class="btn btn-success btn-block" value=
+        {% if (app.request.attributes.get('_route')=="admin_genre_ajout") %}
+        "Ajouter"
+        {% else %}
+        "Modifier"
+        {% endif %}
+        "la catégorie"></div>
+    </div>
+
+        {{ form_end(formGenre) }}
+    </div>
+</div>
+{% endblock %}

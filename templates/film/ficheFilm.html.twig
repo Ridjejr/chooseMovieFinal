@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+
+
+{# fiche films #}
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-md-4">
+            <img src="{{asset(leFilm.image)}}" alt="{{leFilm.titre}}" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+            <h1>{{leFilm.titre}}</h1>
+            <p>{{leFilm.description}}</p>
+            <p>{{leFilm.dateSortie|date("Y")}}</p>
+            <p>{{leFilm.duree|date("H:i")}}</p>
+            <p>{{leFilm.realisateur}}</p>
+            <p>{{leFilm.acteurPrincipale}}</p>
+            <p>{{leFilm.genre.nom}}</p>
+            <!-- Lecteur vidéo caché -->
+            <video id="lecteurVideo" controls style="display: none;">
+                <source id="sourceVideo" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos HTML5.
+            </video>
+
+<!-- Bouton pour déclencher la lecture de la bande-annonce -->
+<a id="lienBandeAnnonce" href="{{ leFilm.bandeAnnonce }}"><i class="fa-solid fa-play"> Bande-annonce</i></a>
+</div>
+    </div>
+
+{% endblock %}
